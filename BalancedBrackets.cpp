@@ -4,13 +4,7 @@
 #include<string>
 using namespace std;
 
-bool ArePair(char opening,char closing)
-{
-	if(opening == '(' && closing == ')') return true;
-	else if(opening == '{' && closing == '}') return true;
-	else if(opening == '[' && closing == ']') return true;
-	return false;
-}
+
 bool AreParanthesesBalanced(string exp)
 {
 	stack<char>  S;

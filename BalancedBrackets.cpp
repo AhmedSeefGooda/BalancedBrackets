@@ -14,14 +14,24 @@ bool ArePair(char opening,char closing)
 bool AreParanthesesBalanced(string exp)
 {
 	stack<char>  S;
+	char top ;
 	for(int i =0;i<exp.length();i++)
 	{
 		if(exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
 			S.push(exp[i]);
 		else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']')
 		{
-			if(S.empty() || !ArePair(S.top(),exp[i]))
+			top = S.top();
+			
+			if(S.empty()){
 				return false;
+			}
+			
+			if(top == '(' && exp[i] != ')' || top == '[' && exp[i] != ']' || top == '{' && exp[i] != '}')
+			{
+				return false;
+			}
+			
 			else
 				S.pop();
 		}
@@ -31,7 +41,7 @@ bool AreParanthesesBalanced(string exp)
 
 int main()
 {
-	/*Code to test the function AreParanthesesBalanced*/
+	
 	string expression;
 	cout<<"Enter an expression:  "; // input expression from STDIN/Console
 	cin>>expression;
